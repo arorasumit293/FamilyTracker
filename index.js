@@ -24,8 +24,6 @@ db.query("select * from users", (err, res) => {
   else
   {
     users = res.rows;
-    console.log(users);
-
   }
 })
 
@@ -50,7 +48,7 @@ app.get("/", async (req, res) =>
     total: countries.length,
     users: users,
     color: "teal",
-    curr_color: users[currentUserId-1].color  //here user.id when sent by form of click is string so ==
+    curr_color: users[currentUserId-1].color
   });
 });
 
@@ -106,8 +104,6 @@ app.post("/new", async (req, res) =>
   let res_new = await db.query("insert into users(name, color) values ($1,$2) RETURNING id, name, color",[req.body.name,req.body.color]);
   users.push(res_new.rows[0]);
   res.redirect("/");
-  //Hint: The RETURNING keyword can return the data that was inserted.
-  //https://www.postgresql.org/docs/current/dml-returning.html
 });
 
 app.listen(port, () => {

@@ -389,13 +389,10 @@
 
   <script>
     const country_codes = "<%= countries %>".split(",")
-    console.log(country_codes);
-    console.log("<%=curr_color%>");
     if(country_codes[0])
     {
       country_codes.forEach((code) => 
       {
-        console.log(code);
         document.getElementById(code).style.fill = "<%=curr_color%>";
       });
     }
